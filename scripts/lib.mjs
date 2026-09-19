@@ -6,7 +6,7 @@ const REPO = /^[\w.-]+\/[\w.-]+$/;
 const HEX = /^#[0-9a-fA-F]{6}$/;
 
 // Slugs that would collide with the landing page's own files.
-const RESERVED = new Set(['art', 'index.html', '404.html', 'style.css', 'versions.json']);
+const RESERVED = new Set(['art', 'index.html', '404.html', 'style.css', 'guestbook.js', 'versions.json']);
 
 // Top-level entries of a no-build ("static") game repo that are not part of the
 // playable site. Everything else is copied, so a new folder in a game just works.

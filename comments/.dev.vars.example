@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `make comments-dev`. These Turnstile keys are
+# Cloudflare's public "always passes" test keys.
+MOD_SECRET=local-dev-secret-local-dev-secret-0000
+MOD_EMAIL=you@example.com
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+ALLOWED_ORIGINS=http://localhost:8090
+PUBLIC_URL=http://localhost:8787

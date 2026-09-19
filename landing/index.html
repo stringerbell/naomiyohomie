@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="guestbook.js"></script>
 </head>
 <body>
   <header class="hero">
@@ -38,10 +39,36 @@
       <h2 id="art-heading">Art</h2>
       <p>I have made some art that you can buy. Share it with your family and friends. Leave comments for ideas I should draw.</p>
     </section>
+
+    <!-- Stays hidden until data-sitekey is filled in (see README, "Guestbook"). -->
+    <section id="guestbook" class="guestbook" aria-labelledby="guestbook-heading" hidden
+             data-api="https://comments.naomiyohomie.com" data-sitekey="">
+      <h2 id="guestbook-heading">Guestbook</h2>
+      <div class="guestbook-cols">
+        <form class="sign" novalidate>
+          <p class="sign-intro">Leave me a message! A grown-up reads every message before it shows up here, so please don't put your last name, address or phone number in it.</p>
+          <label for="gb-name">Your name or nickname</label>
+          <input id="gb-name" name="name" type="text" maxlength="30" autocomplete="nickname" required>
+          <label for="gb-message">Your message</label>
+          <textarea id="gb-message" name="message" rows="4" maxlength="600" required></textarea>
+          <p class="sign-trap" aria-hidden="true">
+            <label for="gb-website">Leave this one empty</label>
+            <input id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </p>
+          <div data-turnstile></div>
+          <button type="submit">Sign the guestbook</button>
+          <p class="sign-status" data-form-status role="status" aria-live="polite"></p>
+        </form>
+        <div class="notes-wrap">
+          <p class="notes-status" data-notes-status role="status">Loading messages...</p>
+          <ul class="notes" data-notes></ul>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>Made by Naomi, with some help from my family.</p>
+    <p>Made by Naomi, with some help from my dad.</p>
   </footer>
 </body>
 </html>

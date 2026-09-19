@@ -1,0 +1,31 @@
+name = "naomiyohomie-comments"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+
+# The site itself stays on GitHub Pages; only this subdomain is a Worker.
+routes = [{ pattern = "comments.naomiyohomie.com", custom_domain = true }]
+
+[vars]
+PUBLIC_URL = "https://comments.naomiyohomie.com"
+ALLOWED_ORIGINS = "https://naomiyohomie.com,https://www.naomiyohomie.com"
+FROM_EMAIL = "guestbook@naomiyohomie.com"
+
+# Secrets (set with `make comments-secrets`, never committed):
+#   MOD_SECRET        signs the moderation links
+#   MOD_EMAIL         where "new comment" emails go (a verified Email Routing address)
+#   TURNSTILE_SECRET  from the Turnstile widget
+
+[[d1_databases]]
+binding = "DB"
+database_name = "naomiyohomie-comments"
+# Filled in by `make comments-db-create`.
+database_id = "REPLACE_WITH_DATABASE_ID"
+migrations_dir = "migrations"
+
+# Needs Email Routing switched on for naomiyohomie.com.
+[[send_email]]
+name = "MAIL"
+
+[observability]
+enabled = true

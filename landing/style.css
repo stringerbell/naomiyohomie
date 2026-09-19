@@ -211,6 +211,102 @@ footer a:focus-visible {
 
 .wall p { margin: 0; max-width: 36rem; }
 
+/* ---------- Guestbook ---------- */
+
+.guestbook { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.guestbook[hidden] { display: none; }
+
+.guestbook-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.sign {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 6px;
+  box-shadow: 0.5rem 0.6rem 0 var(--cobalt-deep);
+  transform: rotate(-0.5deg);
+}
+
+.sign-intro { margin: 0 0 1.25rem; font-size: 1rem; }
+
+.sign label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+
+.sign input,
+.sign textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+}
+
+.sign textarea { resize: vertical; min-height: 6.5rem; }
+
+.sign input:focus-visible,
+.sign textarea:focus-visible,
+.sign button:focus-visible {
+  outline: 4px solid var(--tomato);
+  outline-offset: 2px;
+}
+
+/* Bots fill this in; people never see it. */
+.sign-trap { position: absolute; left: -200vw; width: 1px; height: 1px; overflow: hidden; }
+
+.sign button {
+  margin-top: 0.75rem;
+  padding: 0.65rem 1.3rem 0.7rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--paper);
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.sign button:disabled { opacity: 0.6; cursor: wait; }
+
+.sign-status { margin: 0.9rem 0 0; font-size: 1rem; min-height: 1.5em; }
+
+.notes-status { margin: 0; }
+.notes-status:empty { display: none; }
+
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+
+.note {
+  background: var(--sun);
+  color: var(--ink);
+  padding: 1rem 1.15rem 1.1rem;
+  border-radius: 4px;
+}
+
+.note:nth-child(3n + 2) { background: var(--mint); }
+.note:nth-child(3n + 3) { background: var(--gum); }
+
+.note p { margin: 0; }
+.note-head { margin-bottom: 0.3rem; }
+.note-name { font-weight: 600; }
+.note-date { font-size: 0.9rem; opacity: 0.75; }
+.note-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.note-reply {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.9rem 0.8rem;
+  background: var(--paper);
+  border-radius: 4px;
+}
+
+.note-reply-who { font-family: var(--display); font-size: 1.05rem; color: var(--cobalt); }
+
 footer {
   padding-block: clamp(3rem, 7vw, 5rem) 2.5rem;
   font-size: 1rem;

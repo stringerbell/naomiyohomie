@@ -49,7 +49,7 @@ test('versions.json records a commit for every game', () => {
 });
 
 test('nothing unexpected at the site root', () => {
-  const expected = new Set(['index.html', '404.html', 'style.css', 'art', '.nojekyll', 'versions.json',
+  const expected = new Set(['index.html', '404.html', 'style.css', 'guestbook.js', 'art', '.nojekyll', 'versions.json',
     ...games.map((g) => g.slug)]);
   for (const name of readdirSync(dist)) assert.ok(expected.has(name), `unexpected ${name} in dist/`);
 });
