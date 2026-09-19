@@ -8,7 +8,7 @@ help:
 	@echo "make build          - assemble the whole site into dist/ (uses ../<game> checkouts when present)"
 	@echo "make build-remote   - same, but always from fresh GitHub clones (what CI does)"
 	@echo "make build-landing  - landing page only (fast)"
-	@echo "make serve          - build, then serve dist/ at http://localhost:$(PORT)"
+	@echo "make serve          - live preview at http://localhost:$(PORT); refreshes the browser when you save"
 	@echo "make test           - unit tests, then a full build and checks on dist/"
 	@echo "make test-unit      - unit tests only"
 	@echo "make deploy         - push main; GitHub Actions builds and publishes"
@@ -29,9 +29,10 @@ build-remote:
 build-landing:
 	@node scripts/build.mjs --landing-only
 
-serve: build
-	@echo "naomiyohomie.com preview - http://localhost:$(PORT)"
-	@python3 -m http.server $(PORT) --directory dist
+# Live preview: rebuilds the landing page and refreshes the browser when landing/ or
+# games.json change. Games are only built if missing from dist/ (make build redoes them).
+serve:
+	@PORT=$(PORT) node scripts/dev.mjs
 
 test: test-unit test-build
 
@@ -74,13 +75,15 @@ comments-db-migrate:
 	@$(WRANGLER) d1 migrations apply naomiyohomie-comments --remote
 
 # One time (or to rotate): prompts for each secret.
+# wrangler shows the same "Enter a secret value" prompt every time, so say loudly which is which.
 comments-secrets:
-	@echo "MOD_SECRET: paste a long random string, e.g. from: openssl rand -base64 48"
+	@printf '\n=== 1 of 3: MOD_SECRET ===\nA long random string. Make one with: openssl rand -base64 48\n\n'
 	@$(WRANGLER) secret put MOD_SECRET
-	@echo "MOD_EMAIL: the address that gets the review emails"
+	@printf '\n=== 2 of 3: MOD_EMAIL ===\nThe email address that gets the review emails (not a password).\n\n'
 	@$(WRANGLER) secret put MOD_EMAIL
-	@echo "TURNSTILE_SECRET: the secret key of the Turnstile widget"
+	@printf '\n=== 3 of 3: TURNSTILE_SECRET ===\nThe SECRET key of the Turnstile widget (not the site key).\n\n'
 	@$(WRANGLER) secret put TURNSTILE_SECRET
+	@printf '\nDone. Check the names (never the values) with: cd comments && npx wrangler secret list\n'
 
 deploy-comments: comments-test-unit comments-db-migrate
 	@$(WRANGLER) deploy

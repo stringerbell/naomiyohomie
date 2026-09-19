@@ -17,7 +17,7 @@ clones them without credentials).
 ## Everyday commands
 
 ```
-make serve          # build everything, preview at http://localhost:8090
+make serve          # live preview at http://localhost:8090; save a file in landing/ and the browser refreshes
 make build-landing  # landing page only (fast, keeps games already in dist/)
 make test           # unit tests + full build + checks on dist/
 make deploy         # push main; GitHub Actions builds and publishes

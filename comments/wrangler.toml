@@ -19,8 +19,7 @@ FROM_EMAIL = "guestbook@naomiyohomie.com"
 [[d1_databases]]
 binding = "DB"
 database_name = "naomiyohomie-comments"
-# Filled in by `make comments-db-create`.
-database_id = "REPLACE_WITH_DATABASE_ID"
+database_id = "b2306a6a-bbb0-464e-b6bf-c05f7da92e02"
 migrations_dir = "migrations"
 
 # Needs Email Routing switched on for naomiyohomie.com.
