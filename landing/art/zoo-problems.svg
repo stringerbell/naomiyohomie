@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360">
+  <rect width="600" height="360" fill="#F7B422"/>
+  <!-- fence the giraffe is peeking over -->
+  <g fill="#C8641B">
+    <rect x="0" y="250" width="600" height="18"/>
+    <rect x="0" y="300" width="600" height="18"/>
+    <g>
+      <rect x="30" y="225" width="26" height="135"/>
+      <rect x="130" y="225" width="26" height="135"/>
+      <rect x="230" y="225" width="26" height="135"/>
+      <rect x="440" y="225" width="26" height="135"/>
+      <rect x="540" y="225" width="26" height="135"/>
+    </g>
+  </g>
+  <!-- neck -->
+  <path d="M318 360 L326 150 L392 150 L404 360 Z" fill="#FFDF8A"/>
+  <g fill="#C8641B">
+    <path d="M336 330 l28 -8 l14 22 l-24 14 z"/>
+    <path d="M372 280 l22 6 l2 26 l-22 -4 z"/>
+    <path d="M332 262 l24 -6 l8 24 l-28 8 z"/>
+    <path d="M366 214 l22 4 l2 28 l-24 -6 z"/>
+    <path d="M334 196 l22 -2 l4 24 l-24 4 z"/>
+    <path d="M362 160 l22 0 l2 24 l-22 -2 z"/>
+  </g>
+  <!-- head -->
+  <g>
+    <rect x="336" y="38" width="9" height="44" rx="4" fill="#FFDF8A"/>
+    <rect x="374" y="38" width="9" height="44" rx="4" fill="#FFDF8A"/>
+    <circle cx="340" cy="36" r="9" fill="#3A2208"/>
+    <circle cx="379" cy="36" r="9" fill="#3A2208"/>
+    <path d="M300 96 q-26 -14 -34 6 q18 14 38 8 z" fill="#FFDF8A"/>
+    <path d="M418 96 q26 -14 34 6 q-18 14 -38 8 z" fill="#FFDF8A"/>
+    <path d="M304 84 q56 -30 112 0 l8 66 q-6 46 -64 46 q-58 0 -64 -46 z" fill="#FFDF8A"/>
+    <ellipse cx="360" cy="168" rx="52" ry="30" fill="#F2C76B"/>
+    <!-- shifty eyes looking left -->
+    <circle cx="334" cy="112" r="15" fill="#FDFBF4"/>
+    <circle cx="388" cy="112" r="15" fill="#FDFBF4"/>
+    <circle cx="327" cy="114" r="7" fill="#3A2208"/>
+    <circle cx="381" cy="114" r="7" fill="#3A2208"/>
+    <ellipse cx="344" cy="164" rx="5" ry="7" fill="#3A2208"/>
+    <ellipse cx="376" cy="164" rx="5" ry="7" fill="#3A2208"/>
+    <path d="M338 182 q24 12 46 -4" fill="none" stroke="#3A2208" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- the keeper's lost hat, the evidence -->
+  <g transform="translate(96 196) rotate(-14)">
+    <ellipse cx="50" cy="40" rx="62" ry="12" fill="#3A2208"/>
+    <path d="M14 40 q4 -40 36 -40 q32 0 36 40 z" fill="#5B7F3A"/>
+    <rect x="14" y="30" width="72" height="9" fill="#3A2208"/>
+  </g>
+</svg>

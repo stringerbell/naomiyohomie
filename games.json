@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "zoo-problems",
+    "repo": "stringerbell/zoo-problems",
+    "title": "Zoo Problems",
+    "blurb": "You are a giraffe. Sneak around the zoo and cause as much trouble as you can without getting caught.",
+    "kind": "Sneaky comedy",
+    "build": "npx vite build",
+    "out": "dist",
+    "colors": { "bg": "#FFC93C", "ink": "#3A2208", "accent": "#C8641B" }
+  },
+  {
+    "slug": "limited-gravity",
+    "repo": "stringerbell/limited-gravity",
+    "title": "Limited Gravity",
+    "blurb": "You are an alien. Explore space, fight humans, talk to other aliens, and open the giant chest at the end of every mission.",
+    "kind": "3D space adventure",
+    "build": "npm run build",
+    "out": "dist",
+    "colors": { "bg": "#2A1458", "ink": "#F3EDFF", "accent": "#8DF0C4" }
+  },
+  {
+    "slug": "koala-nightmares",
+    "repo": "stringerbell/koala-nightmares",
+    "title": "Koala Nightmares",
+    "blurb": "Pack your bag, camp in the jungle, study the animals. Then it gets dark, and something is up in the trees.",
+    "kind": "Spooky! Horror game",
+    "colors": { "bg": "#0F2A24", "ink": "#E4F2DC", "accent": "#F2E94E" }
+  },
+  {
+    "slug": "dog-salon",
+    "repo": "stringerbell/dog-salon",
+    "title": "Salon Teckel",
+    "blurb": "You are a German Shepherd who grooms dachshunds. You do not get to choose your tools. Some of them are bees.",
+    "kind": "Grooming chaos",
+    "colors": { "bg": "#FF9CC8", "ink": "#4A0E2E", "accent": "#A3124F" }
+  }
+]

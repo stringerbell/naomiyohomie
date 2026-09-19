@@ -1,0 +1,11 @@
+{
+  "name": "naomiyohomie",
+  "version": "1.0.0",
+  "private": true,
+  "description": "naomiyohomie.com: the landing page, plus the build that gathers Naomi's games into one site",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/unit/*.test.mjs"
+  }
+}

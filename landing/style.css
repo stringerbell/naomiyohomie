@@ -1,0 +1,232 @@
+:root {
+  --cobalt: #2747D8;
+  --cobalt-deep: #1B2F9C;
+  --paper: #FDFBF4;
+  --ink: #14123A;
+  --sun: #FFC93C;
+  --gum: #FF7EB6;
+  --mint: #7CE0B5;
+  --tomato: #FF5A3C;
+
+  --display: 'Bagel Fat One', 'Arial Black', system-ui, sans-serif;
+  --body: 'Bricolage Grotesque', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cobalt);
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero, main, footer {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+}
+
+/* ---------- The name: cut-out paper letters ---------- */
+
+.hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(2rem, 5vw, 4rem); }
+
+.name {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3.4rem, 15.5vw, 12.5rem);
+  line-height: 0.92;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.28em;
+}
+
+.word { display: inline-flex; white-space: nowrap; }
+
+.name i {
+  font-style: normal;
+  display: inline-block;
+  color: var(--c, var(--paper));
+  transform: rotate(var(--r, 0deg)) translateY(var(--y, 0));
+  text-shadow: 0.035em 0.045em 0 var(--cobalt-deep);
+  animation: drop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+  animation-delay: calc(var(--n, 0) * 55ms);
+}
+
+/* Colours cycle; tilt and height wobble on different cycles so it never looks regular. */
+.name i:nth-child(4n + 1) { --c: var(--sun); }
+.name i:nth-child(4n + 2) { --c: var(--paper); }
+.name i:nth-child(4n + 3) { --c: var(--gum); }
+.name i:nth-child(4n + 4) { --c: var(--mint); }
+.word:nth-child(2) i:nth-child(1) { --c: var(--tomato); }
+.word:nth-child(2) i:nth-child(2) { --c: var(--sun); }
+.word:nth-child(3) i:nth-child(4n + 1) { --c: var(--mint); }
+.word:nth-child(3) i:nth-child(4n + 2) { --c: var(--gum); }
+.word:nth-child(3) i:nth-child(4n + 3) { --c: var(--paper); }
+.word:nth-child(3) i:nth-child(4n + 4) { --c: var(--sun); }
+
+.name i:nth-child(3n + 1) { --r: -5deg; }
+.name i:nth-child(3n + 2) { --r: 3.5deg; }
+.name i:nth-child(3n + 3) { --r: -2deg; }
+.name i:nth-child(2n) { --y: 0.035em; }
+.name i:nth-child(5n) { --r: 6deg; --y: -0.03em; }
+
+.word:nth-child(1) i:nth-child(1) { --n: 0; }
+.word:nth-child(1) i:nth-child(2) { --n: 1; }
+.word:nth-child(1) i:nth-child(3) { --n: 2; }
+.word:nth-child(1) i:nth-child(4) { --n: 3; }
+.word:nth-child(1) i:nth-child(5) { --n: 4; }
+.word:nth-child(2) i:nth-child(1) { --n: 5; }
+.word:nth-child(2) i:nth-child(2) { --n: 6; }
+.word:nth-child(3) i:nth-child(1) { --n: 7; }
+.word:nth-child(3) i:nth-child(2) { --n: 8; }
+.word:nth-child(3) i:nth-child(3) { --n: 9; }
+.word:nth-child(3) i:nth-child(4) { --n: 10; }
+.word:nth-child(3) i:nth-child(5) { --n: 11; }
+
+@keyframes drop {
+  from { opacity: 0; transform: rotate(calc(var(--r, 0deg) * -4)) translateY(-0.6em); }
+}
+
+.hello {
+  max-width: 34rem;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.45;
+}
+
+/* ---------- Sections ---------- */
+
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  line-height: 1;
+  margin: 0 0 1.25rem;
+  color: var(--sun);
+}
+
+/* ---------- Game posters ---------- */
+
+.posters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.poster { display: flex; }
+
+/* Pinned-up paper: alternate posters hang slightly crooked. */
+.poster:nth-child(4n + 1) { --tilt: -0.7deg; }
+.poster:nth-child(4n + 2) { --tilt: 0.6deg; }
+.poster:nth-child(4n + 3) { --tilt: 0.5deg; }
+.poster:nth-child(4n + 4) { --tilt: -0.5deg; }
+
+.poster a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 0 1.75rem;
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0.5rem 0.6rem 0 var(--cobalt-deep);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+.poster a:hover,
+.poster a:focus-visible {
+  transform: rotate(0deg) translate(-0.2rem, -0.25rem);
+  box-shadow: 0.75rem 0.9rem 0 var(--cobalt-deep);
+}
+
+.poster a:focus-visible,
+footer a:focus-visible {
+  outline: 4px solid var(--sun);
+  outline-offset: 4px;
+}
+
+.poster-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+}
+
+.poster-kind,
+.poster h3,
+.poster p,
+.poster-play { margin-inline: clamp(1.25rem, 3vw, 2rem); }
+
+.poster-kind {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  /* On light posters the accent alone is too faint for text; mix it toward the ink. */
+  color: color-mix(in oklab, var(--accent) 55%, var(--ink));
+}
+
+.poster h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 1.6rem + 2vw, 3.1rem);
+  line-height: 1;
+  margin-block: 0.35rem 0.75rem;
+}
+
+.poster p {
+  margin-block: 0 1.5rem;
+  max-width: 30rem;
+}
+
+.poster-play {
+  margin-top: auto;
+  padding: 0.6rem 1.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+/* ---------- Art wall ---------- */
+
+.wall {
+  margin-top: clamp(3.5rem, 8vw, 6rem);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  border: 3px dashed color-mix(in oklab, var(--paper) 55%, transparent);
+  border-radius: 6px;
+}
+
+.wall p { margin: 0; max-width: 36rem; }
+
+footer {
+  padding-block: clamp(3rem, 7vw, 5rem) 2.5rem;
+  font-size: 1rem;
+  color: color-mix(in oklab, var(--paper) 80%, var(--cobalt));
+}
+
+footer p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .name i { animation: none; }
+  .poster a { transition: none; }
+}
+
+/* ---------- 404 ---------- */
+
+.lost { padding-block: clamp(3rem, 12vw, 8rem); }
+.lost p { max-width: 34rem; }
+.lost a { color: var(--sun); font-weight: 600; }
+.lost a:focus-visible { outline: 4px solid var(--sun); outline-offset: 4px; }

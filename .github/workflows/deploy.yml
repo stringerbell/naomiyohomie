@@ -1,0 +1,69 @@
+name: Build and deploy naomiyohomie.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # A game repo can ask for a rebuild right after it changes (see README).
+  repository_dispatch:
+    types: [game-updated]
+  # Safety net: pick up game changes even if nobody triggered a rebuild.
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.decide.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Hourly runs only go ahead when a game has new commits since the live build.
+      - id: changed
+        if: github.event_name == 'schedule'
+        run: node scripts/changed.mjs
+      - id: decide
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ steps.changed.outputs.changed }}" = "true" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.decide.outputs.deploy == 'true'
+        run: make test-unit
+      # test-build does a full build first, then checks dist/.
+      - if: steps.decide.outputs.deploy == 'true'
+        run: make test-build
+        env:
+          GAMES_SOURCE: remote
+      - if: steps.decide.outputs.deploy == 'true'
+        uses: actions/configure-pages@v5
+      - if: steps.decide.outputs.deploy == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

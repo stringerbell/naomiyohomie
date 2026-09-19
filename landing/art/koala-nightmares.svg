@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360">
+  <rect width="600" height="360" fill="#081A16"/>
+  <circle cx="486" cy="82" r="46" fill="#E4F2DC"/>
+  <circle cx="504" cy="70" r="42" fill="#081A16"/>
+  <!-- far trees -->
+  <g fill="#0F2A24">
+    <rect x="40" y="0" width="34" height="360"/>
+    <rect x="250" y="0" width="26" height="360"/>
+    <rect x="410" y="0" width="30" height="360"/>
+    <rect x="552" y="0" width="38" height="360"/>
+  </g>
+  <!-- the near tree and its branch -->
+  <g fill="#143A31">
+    <path d="M120 0 h64 l10 360 h-86 z"/>
+    <path d="M176 150 q120 -30 250 -6 l-4 22 q-124 -18 -244 14 z"/>
+  </g>
+  <!-- koala silhouette on the branch -->
+  <g fill="#1F5246">
+    <circle cx="268" cy="66" r="26"/>
+    <circle cx="356" cy="66" r="26"/>
+    <ellipse cx="312" cy="98" rx="50" ry="44"/>
+    <path d="M268 126 q-14 40 8 58 l74 0 q22 -18 8 -58 z"/>
+  </g>
+  <ellipse cx="312" cy="112" rx="11" ry="16" fill="#081A16"/>
+  <!-- eyes -->
+  <g fill="#F2E94E">
+    <ellipse cx="288" cy="88" rx="10" ry="8"/>
+    <ellipse cx="336" cy="88" rx="10" ry="8"/>
+  </g>
+  <g fill="#081A16">
+    <ellipse cx="288" cy="88" rx="2.5" ry="7"/>
+    <ellipse cx="336" cy="88" rx="2.5" ry="7"/>
+  </g>
+  <!-- other eyes, further back -->
+  <g fill="#F2E94E" opacity="0.75">
+    <ellipse cx="62" cy="214" rx="4" ry="3"/><ellipse cx="78" cy="214" rx="4" ry="3"/>
+    <ellipse cx="560" cy="166" rx="4" ry="3"/><ellipse cx="576" cy="166" rx="4" ry="3"/>
+  </g>
+  <!-- the tent, glowing, very small -->
+  <path d="M0 360 L0 322 Q300 296 600 326 L600 360 Z" fill="#0B221D"/>
+  <g transform="translate(424 268)">
+    <path d="M0 58 L44 0 L88 58 Z" fill="#E8843C"/>
+    <path d="M44 0 L34 58 L54 58 Z" fill="#FFD98A"/>
+  </g>
+</svg>
